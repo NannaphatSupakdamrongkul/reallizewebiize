@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RIIZE briize | Rise & Realize</title>
+  <link rel="stylesheet" href="/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <!-- ดึง Navbar จากไฟล์กลาง -->
+  <%- include('partials/navbar') %>
+
+  <!-- Hero Section -->
+  <header class="border-bottom py-5" style="background: linear-gradient(180deg, rgba(255, 87, 34, 0.05) 0%, rgba(255, 255, 255, 1) 100%);">
+    <div class="container py-lg-4">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-warning-subtle border border-warning-subtle text-warning-emphasis small fw-medium mb-3">
+            <span>✨</span> RIIZE Official Fan Space
+            <% if (typeof user !== 'undefined' && user) { %>
+              | ยินดีต้อนรับคุณ, <%= user.fullname %>
+            <% } %>
+          </div>
+          <h1 class="display-3 fw-bold lh-sm mb-3">
+            Rise & Realize<br>
+            <span class="text-riize">RIIZE</span>
+          </h1>
+          <p class="lead text-secondary mb-4 col-xl-10">
+            เปิดประตูสู่โลกดนตรี Emotional Pop พื้นที่อัปเดตผลงาน คอนเสิร์ต และเรื่องราวสุดพิเศษที่เชื่อมโยงหนุ่มๆ ทั้ง 6 คนกับ BRIIZE ทั่วโลกไว้ด้วยกัน
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a class="btn btn-warning text-dark fw-bold btn-lg px-4 shadow-sm" href="#activities" style="background-color: var(--riize-orange); border-color: var(--riize-orange); color: #fff !important;">
+              ฟังผลงานล่าสุด 🎵
+            </a>
+            <a class="btn btn-outline-dark btn-lg px-4" href="/members">
+              ทำความรู้จักสมาชิก
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="card border-0 shadow-lg rounded-4 overflow-hidden p-3 bg-white">
+            <div class="position-relative overflow-hidden rounded-3 mb-3">
+              <img src="/assets/riize-boom.jpeg" alt="Boom Boom Bass" class="img-fluid w-100" style="height: 240px; object-fit: cover;">
+              <span class="badge bg-dark bg-opacity-75 position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">
+                🔥 Title Track
+              </span>
+            </div>
+            <div class="card-body p-2 text-center">
+              <span class="text-uppercase tracking-wide text-secondary small fw-semibold d-block">The 1st Mini Album [RIIZING]</span>
+              <strong class="fs-3 text-dark d-block my-1">Boom Boom Bass</strong>
+              <p class="text-secondary small mb-3">สัมผัสไลน์เบสสุดมันส์และพลังอันไร้ขีดจำกัด</p>
+              <div class="d-flex justify-content-center gap-2">
+                <span class="badge rounded-pill bg-danger-subtle text-danger-emphasis border border-danger-subtle px-3 py-2">YouTube</span>
+                <span class="badge rounded-pill bg-success-subtle text-success-emphasis border border-success-subtle px-3 py-2">Spotify</span>
+                <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis border border-primary-subtle px-3 py-2">Apple Music</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container py-5" id="activities">
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
+      <div>
+        <span class="text-riize fw-semibold">DISCOVER</span>
+        <h2 class="display-6 fw-bold mb-1">ผลงานและกิจกรรม</h2>
+        <p class="text-body-secondary mb-0">ค้นหาเพลงและผลงานของ RIIZE จากฐานข้อมูล</p>
+      </div>
+      <div class="input-group" style="max-width: 320px;">
+        <span class="input-group-text">⌕</span>
+        <input class="form-control" id="activitySearch" type="search" placeholder="ค้นหาชื่อเพลง...">
+        <button class="btn btn-outline-secondary" id="clearSearch" type="button">ล้าง</button>
+      </div>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="nav nav-pills flex-nowrap overflow-x-auto gap-2 pb-2 mb-4" id="categoryFilters">
+      <button class="nav-link active" type="button" data-category="all">ทั้งหมด</button>
+      <button class="nav-link" type="button" data-category="single">ซิงเกิล</button>
+      <button class="nav-link" type="button" data-category="album">มินิอัลบั้ม</button>
+      <button class="nav-link" type="button" data-category="tour">ทัวร์คอนเสิร์ต</button>
+    </div>
+
+    <!-- Cards Container (ดึงข้อมูลจาก Database ผ่าน EJS วนลูป) -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4" id="activityGrid">
+      <% if (typeof activities !== 'undefined' && activities.length > 0) { %>
+        <% activities.forEach(item => { %>
+          <div class="col" data-category="<%= item.category %>">
+            <div class="card h-100 shadow-sm border-0 d-flex flex-column">
+              <img src="/<%= item.image %>" class="card-img-top object-fit-cover" style="height: 200px;" alt="<%= item.title %>">
+              <div class="card-body d-flex flex-column p-4">
+                <span class="badge bg-primary-subtle text-primary-emphasis border border-primary-subtle align-self-start mb-2"><%= item.category_label %></span>
+                <h3 class="h5 card-title fw-bold"><%= item.title %></h3>
+                <p class="text-body-secondary small mb-3">วันที่เผยแพร่: <%= item.release_date %></p>
+                <a href="/discography" class="btn btn-outline-dark btn-sm mt-auto">ดูรายละเอียด</a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <div class="col-12 text-center py-5">
+          <p class="text-muted">ยังไม่มีข้อมูลผลงานในฐานข้อมูล</p>
+        </div>
+      <% } %>
+    </div>
+
+    <div class="alert alert-info d-none mt-4" id="emptyState">
+      <strong>ไม่พบข้อมูล</strong> ลองค้นหาด้วยคำอื่นดูนะ
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 bg-white border-top">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
+      <small class="text-body-secondary">170 นันท์นภัส สุภัคดำรงกุล</small>
+      <small class="badge rounded-pill text-bg-light border">SM Entertainment</small>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal fade" id="activityModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow">
+        <div class="modal-header">
+          <h2 class="modal-title h5">ข้อมูลผลงาน</h2>
+          <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>ติดตามผลงาน MV และเพอร์ฟอร์แมนซ์อย่างเป็นทางการได้ที่ช่อง SMTOWN</p>
+          <a href="https://youtube.com" target="_blank" class="btn btn-primary w-100">รับชมผ่าน YouTube</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/vendor/bootstrap.bundle.min.js"></script>
+  <script src="/js/home.js"></script>
+</body>
+</html>

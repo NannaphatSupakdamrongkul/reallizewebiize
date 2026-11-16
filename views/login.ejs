@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | RIIZE briize</title>
+  <link rel="stylesheet" href="/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <main class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="card shadow-sm border-0 p-4 p-md-5">
+          <div class="text-center mb-4">
+            <h1 class="h3 fw-bold">เข้าสู่ระบบ</h1>
+            <p class="text-secondary small">กรอกอีเมลและรหัสผ่านเพื่อเข้าสู่เว็บไซต์</p>
+          </div>
+
+          <% if (typeof error !== 'undefined' && error) { %>
+            <div class="alert alert-danger" role="alert"><%= error %></div>
+          <% } %>
+
+          <form action="/login" method="POST">
+            <div class="mb-3">
+              <label for="email" class="form-label">อีเมล</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">รหัสผ่าน</label>
+              <input type="password" class="form-control" id="password" name="password" required>
+              
+              <!-- เพิ่มลิงก์ลืมรหัสผ่านตรงนี้ -->
+              <div class="text-end mt-1">
+                <a href="/forgot-password" class="small text-decoration-none text-muted">ลืมรหัสผ่านใช่ไหม?</a>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">เข้าสู่ระบบ</button>
+          </form>
+
+          <div class="text-center mt-3">
+            <small class="text-secondary">ยังไม่มีบัญชีสมาชิก? <a href="/register">สมัครสมาชิกที่นี่</a></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/vendor/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+:root {
+  /* Bootstrap Global Tokens */
+  --bs-primary: #6f42c1;
+  --bs-primary-rgb: 111, 66, 193;
+  --bs-link-color: #6f42c1;
+  --bs-link-hover-color: #59359a;
+  --bs-border-radius: .8rem;
+  --bs-border-radius-lg: 1rem;
+  --bs-body-font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans Thai", sans-serif;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-bg: #59359a;
+  --bs-btn-hover-border-color: #59359a;
+}
+
+.progress-bar { background-color: var(--bs-primary); }
+

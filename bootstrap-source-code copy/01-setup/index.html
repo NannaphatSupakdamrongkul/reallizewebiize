@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>01 — Setup Bootstrap</title>
+
+  <!-- 1) โหลด Bootstrap ก่อน -->
+  <link rel="stylesheet" href="../../bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <!-- 2) โหลด Custom CSS หลัง Bootstrap เพื่อให้ override ได้ -->
+  <link rel="stylesheet" href="../lesson.css">
+</head>
+<body>
+  <nav class="border-bottom py-3">
+    <div class="container d-flex justify-content-between">
+      <a href="../index.html" class="text-decoration-none">← รวมบทเรียน</a>
+      <span class="text-body-secondary">Slides 1–10</span>
+    </div>
+  </nav>
+
+  <main class="container py-5">
+    <span class="badge text-bg-primary mb-3">Lesson 01</span>
+    <h1 class="display-4 fw-bold">Hello, Bootstrap!</h1>
+    <p class="lead text-body-secondary">หากข้อความ ปุ่ม และ spacing แสดงผลตามนี้ แปลว่า Bootstrap CSS โหลดสำเร็จ</p>
+    <div class="d-flex gap-2 my-4">
+      <button class="btn btn-primary">Primary Button</button>
+      <button class="btn btn-outline-secondary">Outline Button</button>
+    </div>
+
+    <div class="lab-note mt-5">
+      <strong>LAB:</strong> ลองสลับลำดับไฟล์ CSS หรือเอา Bootstrap CSS ออก แล้วเปรียบเทียบผลลัพธ์
+    </div>
+  </main>
+
+  <!-- 3) Bootstrap JS bundle อยู่ก่อนปิด body -->
+  <script src="../../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

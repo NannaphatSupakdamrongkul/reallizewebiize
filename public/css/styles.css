@@ -1,0 +1,38 @@
+:root {
+  --riize-orange: #FF5722;
+  --riize-dark: #1a1a1a;
+  --riize-bg: #fdfdfd;
+}
+
+body {
+  background-color: var(--riize-bg);
+  color: var(--riize-dark);
+}
+
+.member-card .card-img-top {
+  height: 360px !important;
+  object-fit: cover !important;
+}
+
+.gallery-item img {
+  height: 260px !important;
+  object-fit: cover !important;
+  transition: transform 0.2s ease-in-out;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.02);
+}
+
+/* บังคับรูปในหน้าแรก (Index) และหน้าผลงานเพลงให้สูงเท่ากันทั้งหมด */
+.card .card-img-top,
+.card img,
+.discography-card img {
+  width: 100% !important;
+  height: 220px !important;
+  object-fit: cover !important;
+}
+
+.text-riize {
+  color: var(--riize-orange) !important;
+}

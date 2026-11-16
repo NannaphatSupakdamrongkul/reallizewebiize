@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>03 — Bootstrap Grid</title>
+  <link rel="stylesheet" href="../vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="../lesson.css">
+  <style>
+    .grid-cell { padding: 1.5rem .75rem; text-align: center; font-weight: 700; color: #5b21b6; background: #ede9fe; border: 1px solid #c4b5fd; border-radius: .75rem; }
+  </style>
+</head>
+<body>
+  <nav class="border-bottom py-3"><div class="container"><a href="../index.html">← รวมบทเรียน</a></div></nav>
+  <main class="container py-5">
+    <span class="badge text-bg-primary">Slides 14–17</span>
+    <h1 class="fw-bold mt-3">12-column Grid</h1>
+    <p class="text-body-secondary">โครงสร้างหลัก: container → row → column → content</p>
+
+    <div class="row g-4 mt-3">
+      <main class="col-8"><div class="grid-cell">.col-8 — Main Content</div></main>
+      <aside class="col-4"><div class="grid-cell">.col-4 — Sidebar</div></aside>
+    </div>
+
+    <div class="row g-3 mt-1">
+      <div class="col-3"><div class="grid-cell">3</div></div>
+      <div class="col-3"><div class="grid-cell">3</div></div>
+      <div class="col-3"><div class="grid-cell">3</div></div>
+      <div class="col-3"><div class="grid-cell">3</div></div>
+    </div>
+
+    <div class="lab-note mt-5"><strong>LAB:</strong> เปลี่ยน 8/4 เป็น 9/3 และเปลี่ยน `g-4` เป็น `g-0` เพื่อดูผลของ gutter</div>
+  </main>
+  <script src="../vendor/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

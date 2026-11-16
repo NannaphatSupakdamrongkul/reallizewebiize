@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>04 — Responsive Grid</title>
+  <link rel="stylesheet" href="../vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="../lesson.css">
+  <style>
+    .visual { min-height: 20rem; background: linear-gradient(135deg, #c7d2fe, #a5f3fc 55%, #fde68a); border-radius: 1.5rem; }
+  </style>
+</head>
+<body>
+  <nav class="border-bottom py-3"><div class="container"><a href="../index.html">← รวมบทเรียน</a></div></nav>
+  <main class="container py-5">
+    <span class="badge text-bg-primary">Slides 18–21</span>
+    <div class="row align-items-center g-5 mt-2">
+      <div class="col-12 col-lg-7">
+        <h1 class="display-5 fw-bold">มือถือเต็มแถว<br>Desktop แบ่ง 7/5</h1>
+        <p class="lead text-body-secondary">`col-12` ทำงานตั้งแต่จอเล็ก และ `col-lg-*` override เมื่อ viewport ≥ 992px</p>
+        <button class="btn btn-primary btn-lg">Call to Action</button>
+      </div>
+      <div class="col-12 col-lg-5"><div class="visual"></div></div>
+    </div>
+
+    <div class="lab-note mt-5"><strong>LAB:</strong> เปิด Responsive Mode ที่ 390px, 768px และ 1280px แล้วเปลี่ยน `lg` เป็น `md`</div>
+  </main>
+  <script src="../vendor/bootstrap.bundle.min.js"></script>
+</body>
+</html>

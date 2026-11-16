@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>10 — JavaScript Components</title>
+  <link rel="stylesheet" href="../vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="../lesson.css">
+</head>
+<body>
+  <nav class="border-bottom py-3"><div class="container d-flex justify-content-between"><a href="../index.html">← รวมบทเรียน</a><button class="btn btn-outline-primary" data-bs-toggle="offcanvas" data-bs-target="#lessonMenu" aria-controls="lessonMenu">เปิด Offcanvas</button></div></nav>
+  <main class="container py-5">
+    <span class="badge text-bg-primary">Slides 45–49</span>
+    <h1 class="fw-bold mt-3">Bootstrap JavaScript Components</h1>
+
+    <section class="demo-block my-4">
+      <h2 class="h4">Modal — Data API</h2>
+      <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#confirmModal">เปิด Modal</button>
+      <button id="openWithJs" class="btn btn-outline-primary mt-2">เปิดด้วย JavaScript API</button>
+    </section>
+
+    <section>
+      <h2 class="h4">Accordion</h2>
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#answerOne">Bootstrap ต้องใช้ jQuery หรือไม่?</button></h3>
+          <div id="answerOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"><div class="accordion-body">Bootstrap 5 ไม่ต้องใช้ jQuery</div></div>
+        </div>
+        <div class="accordion-item">
+          <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answerTwo">bundle ต่างจาก bootstrap.js อย่างไร?</button></h3>
+          <div id="answerTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Bundle รวม Popper ซึ่ง Dropdown, Tooltip และ Popover ใช้จัดตำแหน่ง</div></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lab-note mt-5"><strong>LAB:</strong> ฟัง event `shown.bs.modal` และแสดงเวลาเปิด Modal ใน Console</div>
+  </main>
+
+  <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header"><h2 class="modal-title fs-5" id="confirmTitle">ยืนยันการสมัคร</h2><button class="btn-close" data-bs-dismiss="modal" aria-label="ปิด"></button></div>
+        <div class="modal-body">คุณกำลังสมัคร Bootstrap Workshop รอบวันเสาร์</div>
+        <div class="modal-footer"><button class="btn btn-light" data-bs-dismiss="modal">ยกเลิก</button><button class="btn btn-primary">ยืนยัน</button></div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="offcanvas offcanvas-end" tabindex="-1" id="lessonMenu" aria-labelledby="lessonMenuTitle">
+    <div class="offcanvas-header"><h2 class="offcanvas-title fs-5" id="lessonMenuTitle">หัวข้อ Interactive UI</h2><button class="btn-close" data-bs-dismiss="offcanvas" aria-label="ปิด"></button></div>
+    <div class="offcanvas-body"><ul class="list-group"><li class="list-group-item">Modal</li><li class="list-group-item">Accordion</li><li class="list-group-item">Offcanvas</li></ul></div>
+  </aside>
+
+  <script src="../vendor/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+

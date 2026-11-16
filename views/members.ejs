@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members | RIIZE briize</title>
+  <link rel="stylesheet" href="/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <!-- ดึง Navbar จากไฟล์กลาง -->
+  <%- include('partials/navbar') %>
+
+  <main class="container py-5">
+    <div class="text-center mb-5">
+      <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle mb-2">ARTISTS</span>
+      <h1 class="display-5 fw-bold">สมาชิกวง RIIZE</h1>
+      <p class="text-body-secondary">ทำความรู้จักสมาชิกทั้ง 6 คน พร้อมส่งกำลังใจให้เมนที่คุณชอบ</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- 1. Shotaro -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card member-card h-100 shadow-sm border-0">
+          <img src="/assets/member-shotaro.jpg" class="card-img-top" alt="Shotaro">
+          <div class="card-body p-4 d-flex flex-column">
+            <h2 class="card-title h4">SHOTARO (โชทาโร่)</h2>
+            <p class="text-body-secondary small mb-2">สัญชาติ: ญี่ปุ่น | เกิด: 25 พ.ย. 2000</p>
+            <p class="card-text mb-1">ตำแหน่ง: <strong>Main Dancer</strong></p>
+            <p class="card-text">จุดเด่น: <span class="badge bg-light text-dark border">ทักษะการเต้นระดับแนวหน้า</span></p>
+            <div class="mt-auto pt-3 border-top">
+              <button type="button" class="btn btn-outline-danger btn-sm like-btn w-100">
+                ❤️ เชียร์เมน (<span class="like-count">0</span>)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Eunseok -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card member-card h-100 shadow-sm border-0">
+          <img src="/assets/member-eunseok.webp" class="card-img-top" alt="Eunseok">
+          <div class="card-body p-4 d-flex flex-column">
+            <h2 class="card-title h4">EUNSEOK (อึนซอก)</h2>
+            <p class="text-body-secondary small mb-2">สัญชาติ: เกาหลีใต้ | เกิด: 19 มี.ค. 2001</p>
+            <p class="card-text mb-1">ตำแหน่ง: <strong>Vocalist / Visual</strong></p>
+            <p class="card-text">จุดเด่น: <span class="badge bg-light text-dark border">เสียงทุ้มต่ำและเสน่ห์แบบสุขุม</span></p>
+            <div class="mt-auto pt-3 border-top">
+              <button type="button" class="btn btn-outline-danger btn-sm like-btn w-100">
+                ❤️ เชียร์เมน (<span class="like-count">0</span>)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Sungchan -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card member-card h-100 shadow-sm border-0">
+          <img src="/assets/member-sungchan.jpeg" class="card-img-top" alt="Sungchan">
+          <div class="card-body p-4 d-flex flex-column">
+            <h2 class="card-title h4">SUNGCHAN (ซองชาน)</h2>
+            <p class="text-body-secondary small mb-2">สัญชาติ: เกาหลีใต้ | เกิด: 13 ก.ย. 2001</p>
+            <p class="card-text mb-1">ตำแหน่ง: <strong>Main Rapper</strong></p>
+            <p class="card-text">จุดเด่น: <span class="badge bg-light text-dark border">โฟลว์การแร็ปทรงพลัง รูปร่างสูงโปร่ง</span></p>
+            <div class="mt-auto pt-3 border-top">
+              <button type="button" class="btn btn-outline-danger btn-sm like-btn w-100">
+                ❤️ เชียร์เมน (<span class="like-count">0</span>)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Wonbin -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card member-card h-100 shadow-sm border-0">
+          <img src="/assets/member-wonbin.webp" class="card-img-top" alt="Wonbin">
+          <div class="card-body p-4 d-flex flex-column">
+            <h2 class="card-title h4">WONBIN (วอนบิน)</h2>
+            <p class="text-body-secondary small mb-2">สัญชาติ: เกาหลีใต้ | เกิด: 2 มี.ค. 2002</p>
+            <p class="card-text mb-1">ตำแหน่ง: <strong>Center / Guitarist</strong></p>
+            <p class="card-text">จุดเด่น: <span class="badge bg-light text-dark border">เล่นกีตาร์โปร่งและคาริสม่าบนเวที</span></p>
+            <div class="mt-auto pt-3 border-top">
+              <button type="button" class="btn btn-outline-danger btn-sm like-btn w-100">
+                ❤️ เชียร์เมน (<span class="like-count">0</span>)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Sohee -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card member-card h-100 shadow-sm border-0">
+          <img src="/assets/member-sohee.webp" class="card-img-top" alt="Sohee">
+          <div class="card-body p-4 d-flex flex-column">
+            <h2 class="card-title h4">SOHEE (โซฮี)</h2>
+            <p class="text-body-secondary small mb-2">สัญชาติ: เกาหลีใต้ | เกิด: 21 พ.ย. 2003</p>
+            <p class="card-text mb-1">ตำแหน่ง: <strong>Main Vocalist</strong></p>
+            <p class="card-text">จุดเด่น: <span class="badge bg-light text-dark border">พลังเสียงไฮโน้ตที่ใสและกว้าง</span></p>
+            <div class="mt-auto pt-3 border-top">
+              <button type="button" class="btn btn-outline-danger btn-sm like-btn w-100">
+                ❤️ เชียร์เมน (<span class="like-count">0</span>)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Anton -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card member-card h-100 shadow-sm border-0">
+          <img src="/assets/member-anton.jpg" class="card-img-top" alt="Anton">
+          <div class="card-body p-4 d-flex flex-column">
+            <h2 class="card-title h4">ANTON (แอนตัน)</h2>
+            <p class="text-body-secondary small mb-2">สัญชาติ: อเมริกัน-เกาหลี | เกิด: 21 มี.ค. 2004</p>
+            <p class="card-text mb-1">ตำแหน่ง: <strong>Maknae / Cellist</strong></p>
+            <p class="card-text">จุดเด่น: <span class="badge bg-light text-dark border">เล่นเชลโลและโปรดิวซ์เพลง</span></p>
+            <div class="mt-auto pt-3 border-top">
+              <button type="button" class="btn btn-outline-danger btn-sm like-btn w-100">
+                ❤️ เชียร์เมน (<span class="like-count">0</span>)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 bg-white border-top">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
+      <small class="text-body-secondary">170 นันท์นภัส สุภัคดำรงกุล</small>
+      <small class="badge rounded-pill text-bg-light border">SM Entertainment</small>
+    </div>
+  </footer>
+
+  <script src="/vendor/bootstrap.bundle.min.js"></script>
+  <script src="/js/common.js"></script>
+</body>
+</html>

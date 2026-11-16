@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Forgot Password | RIIZE briize</title>
+  <link rel="stylesheet" href="/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <!-- ดึง Navbar กลางมาแสดงผล -->
+  <%- include('partials/navbar') %>
+
+  <main class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="card shadow-sm border-0 p-4 p-md-5">
+          <h1 class="h3 fw-bold text-center mb-3">ลืมรหัสผ่าน</h1>
+          <p class="text-secondary small text-center mb-4">กรอกอีเมลของคุณเพื่อรับลิงก์หรือรหัสรีเซ็ตรหัสผ่าน</p>
+
+          <!-- แสดงข้อความแจ้งเตือน Error หรือ Success จากหลังบ้าน -->
+          <% if (typeof error !== 'undefined' && error) { %>
+            <div class="alert alert-danger" role="alert"><%= error %></div>
+          <% } %>
+          <% if (typeof success !== 'undefined' && success) { %>
+            <div class="alert alert-success" role="alert"><%= success %></div>
+          <% } %>
+
+          <form action="/forgot-password" method="POST">
+            <div class="mb-3">
+              <label for="email" class="form-label">อีเมลที่ใช้สมัคร</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">ส่งอีเมลรีเซ็ต</button>
+          </form>
+
+          <div class="text-center mt-3">
+            <a href="/login" class="text-decoration-none">กลับไปหน้าเข้าสู่ระบบ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/vendor/bootstrap.bundle.min.js"></script>
+</body>
+</html>

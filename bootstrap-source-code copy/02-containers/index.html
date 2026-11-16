@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>02 — Containers</title>
+  <link rel="stylesheet" href="../vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="../lesson.css">
+</head>
+<body>
+  <nav class="border-bottom py-3"><div class="container"><a href="../index.html">← รวมบทเรียน</a></div></nav>
+  <main class="py-5">
+    <div class="container mb-5">
+      <span class="badge text-bg-primary">Slides 11–13</span>
+      <h1 class="fw-bold mt-3">Container คุมความกว้างเนื้อหา</h1>
+    </div>
+
+    <section class="container mb-4">
+      <div class="demo-block border-primary">
+        <h2 class="h4">.container</h2>
+        <p class="mb-0">มี max-width เปลี่ยนตาม breakpoint และอยู่กึ่งกลางหน้าจอ</p>
+      </div>
+    </section>
+
+    <section class="container-fluid mb-4">
+      <div class="demo-block border-success">
+        <h2 class="h4">.container-fluid</h2>
+        <p class="mb-0">กว้าง 100% ทุก viewport</p>
+      </div>
+    </section>
+
+    <section class="container-lg">
+      <div class="demo-block border-warning">
+        <h2 class="h4">.container-lg</h2>
+        <p class="mb-0">Fluid ก่อนถึง lg แล้วจึงเริ่มล็อก max-width</p>
+      </div>
+    </section>
+
+    <div class="container mt-5"><div class="lab-note"><strong>LAB:</strong> ลากความกว้าง Browser แล้วสังเกตขอบซ้าย–ขวาของแต่ละ Container</div></div>
+  </main>
+  <script src="../vendor/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

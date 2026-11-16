@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>09 — Forms and Validation</title>
+  <link rel="stylesheet" href="../vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="../lesson.css">
+</head>
+<body class="bg-body-tertiary">
+  <nav class="bg-body border-bottom py-3"><div class="container"><a href="../index.html">← รวมบทเรียน</a></div></nav>
+  <main class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <span class="badge text-bg-primary">Slides 41–44</span>
+        <form class="card border-0 shadow mt-4 needs-validation" novalidate>
+          <div class="card-body p-4 p-lg-5">
+            <h1 class="fw-bold">สมัคร Bootstrap Workshop</h1>
+            <p class="text-body-secondary">ทุก field มี label และ feedback ที่ช่วยบอกวิธีแก้</p>
+
+            <div class="row g-3 mt-2">
+              <div class="col-md-6">
+                <label for="fullName" class="form-label">ชื่อ–นามสกุล</label>
+                <input id="fullName" name="fullName" class="form-control form-control-lg" required minlength="2">
+                <div class="invalid-feedback">กรุณากรอกชื่ออย่างน้อย 2 ตัวอักษร</div>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label">อีเมล</label>
+                <input id="email" name="email" type="email" class="form-control form-control-lg" required>
+                <div class="invalid-feedback">กรุณากรอกอีเมลในรูปแบบ name@example.com</div>
+              </div>
+              <div class="col-12">
+                <label for="course" class="form-label">หลักสูตร</label>
+                <select id="course" name="course" class="form-select form-select-lg" required>
+                  <option value="">เลือกหลักสูตร...</option>
+                  <option>Bootstrap Workshop</option>
+                  <option>Frontend Foundation</option>
+                </select>
+                <div class="invalid-feedback">กรุณาเลือกหลักสูตร</div>
+              </div>
+              <div class="col-12">
+                <label for="message" class="form-label">เป้าหมายการเรียน</label>
+                <textarea id="message" name="message" class="form-control" rows="4"></textarea>
+              </div>
+              <div class="col-12 form-check ms-2">
+                <input id="terms" class="form-check-input" type="checkbox" required>
+                <label for="terms" class="form-check-label">ยอมรับเงื่อนไขการสมัคร</label>
+                <div class="invalid-feedback">ต้องยอมรับเงื่อนไขก่อนส่งแบบฟอร์ม</div>
+              </div>
+              <div class="col-12"><button class="btn btn-primary btn-lg w-100" type="submit">ส่งข้อมูล</button></div>
+            </div>
+          </div>
+        </form>
+        <div class="lab-note mt-4"><strong>LAB:</strong> เพิ่ม field เบอร์โทรที่ใช้ `pattern` และเขียน error message ที่บอกวิธีแก้</div>
+      </div>
+    </div>
+  </main>
+  <script src="../vendor/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
