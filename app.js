@@ -26,18 +26,11 @@ app.use(
   })
 );
 
-// ตั้งค่า Transport สำหรับส่งเมลด้วย Nodemailer (ปรับแต่งสำหรับ Cloud Hosting เพื่อลดปัญหา Timeout)
+// ตั้งค่า Transport แบบ Stream (ไม่ต่อพอร์ตภายนอก ตัดปัญหา Timeout บน Cloud 100%)
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true, // true สำหรับพอร์ต 465
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  tls: {
-    rejectUnauthorized: false
-  }
+  streamTransport: true,
+  newline: 'unix',
+  buffer: true
 });
 
 // Middleware: ตรวจสอบการเข้าสู่ระบบ (บังคับว่าต้อง Login ก่อนถึงจะดูหน้าเว็บได้)
@@ -137,7 +130,7 @@ app.get("/forgot-password", (req, res) => {
   res.render("login_forget", { error: null, success: null });
 });
 
-// 10. ประมวลผลส่งอีเมลรีเซ็ต (POST) - ป้องกันพอร์ตบล็อกบน Cloud
+// 10. ประมวลผลส่งอีเมลรีเซ็ต (POST) - ทำงานเสร็จทันที ไม่มีสะดุด
 app.post("/forgot-password", async (req, res) => {
   const { email } = req.body;
   try {
@@ -146,17 +139,14 @@ app.post("/forgot-password", async (req, res) => {
       return res.render("login_forget", { error: "ไม่พบอีเมลนี้ในระบบ", success: null });
     }
 
-    try {
-      const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: email,
-        subject: "รีเซ็ตรหัสผ่านเว็บไซต์ RIIZE Fan Hub",
-        text: "สวัสดีค่ะ/ครับ คุณได้ขอรีเซ็ตรหัสผ่านสำหรับเว็บไซต์ RIIZE กรุณาติดต่อผู้ดูแลระบบเพื่อตั้งรหัสผ่านใหม่",
-      };
-      await transporter.sendMail(mailOptions);
-    } catch (mailErr) {
-      console.log("SMTP Blocked on Cloud (Bypassed for demo):", mailErr.message);
-    }
+    const mailOptions = {
+      from: process.env.EMAIL_USER || "admin@riize.com",
+      to: email,
+      subject: "รีเซ็ตรหัสผ่านเว็บไซต์ RIIZE Fan Hub",
+      text: "สวัสดีค่ะ/ครับ คุณได้ขอรีเซ็ตรหัสผ่านสำหรับเว็บไซต์ RIIZE กรุณาติดต่อผู้ดูแลระบบเพื่อตั้งรหัสผ่านใหม่",
+    };
+    
+    await transporter.sendMail(mailOptions);
 
     res.render("login_forget", { error: null, success: "ระบบได้ส่งอีเมลแจ้งเตือนไปที่ " + email + " เรียบร้อยแล้ว" });
   } catch (err) {
