@@ -64,7 +64,7 @@ app.get("/", checkAuth, async (req, res) => {
 
     const today = getBangkokDate();
 
-    // บันทึกสถิติ: ถ้า IP เดิมในวันเดียวกันเข้ามา ระบบจะไม่อนุญาตให้ Insert ซ้ำ (ตามเงื่อนไข Unique Key) แต่จะอัปเดตเวลา last_visited_at แทน[cite: 1]
+    // บันทึกสถิติ: ถ้า IP 
     await pool.query(
       `INSERT INTO visitors (ip_address, visit_date, last_visited_at) 
        VALUES (?, ?, NOW()) 
@@ -107,12 +107,12 @@ app.get("/gallery", checkAuth, (req, res) => {
   res.render("gallery", { user: req.session.user });
 });
 
-// 5. หน้าสมัครสมาชิก (GET)
+// 5. หน้าสมัครสมาชิก 
 app.get("/register", (req, res) => {
   res.render("register", { user: req.session.user, error: null });
 });
 
-// 6. ประมวลผลการสมัครสมาชิก (POST)
+// 6. ประมวลผลการสมัครสมาชิก 
 app.post("/register", async (req, res) => {
   const { fullname, email, password, bias, message } = req.body;
   try {
@@ -134,7 +134,7 @@ app.post("/register", async (req, res) => {
   }
 });
 
-// 7. หน้าเข้าสู่ระบบ (GET)
+// 7. หน้าเข้าสู่ระบบ 
 app.get("/login", (req, res) => {
   res.render("login", { user: req.session.user, error: null });
 });
@@ -162,12 +162,12 @@ app.post("/login", async (req, res) => {
   }
 });
 
-// 9. หน้าขอลืมรหัสผ่าน (GET)
+// 9. หน้าขอลืมรหัสผ่าน 
 app.get("/forgot-password", (req, res) => {
   res.render("login_forget", { error: null, success: null });
 });
 
-// 10. ประมวลผลส่งอีเมลรีเซ็ต (POST) 
+// 10. ประมวลผลส่งอีเมลรีเซ็ต  
 app.post("/forgot-password", async (req, res) => {
   const { email } = req.body;
   try {
