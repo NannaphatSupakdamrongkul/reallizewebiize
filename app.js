@@ -43,15 +43,52 @@ function checkAuth(req, res, next) {
 }
 
 // --- ROUTES ---
+// ฟังก์ชันดึงวันที่ปัจจุบันตามโซนเวลา Asia/Bangkok (รูปแบบ YYYY-MM-DD)[cite: 1]
+function getBangkokDate() {
+  const options = { timeZone: 'Asia/Bangkok', year: 'numeric', month: '2-digit', day: '2-digit' };
+  const formatter = new Intl.DateTimeFormat('en-CA', options);
+  return formatter.format(new Date());
+}
 
-// 1. หน้าแรก (ต้อง Login ก่อน)
+// 1. หน้าแรก (ต้อง Login ก่อน พร้อมระบบ Visitor Counter)[cite: 1]
 app.get("/", checkAuth, async (req, res) => {
   try {
+    // ดึง IP address ของผู้เข้าชม (รองรับทั้ง Local และ Proxy/Cloud)[cite: 1]
+    let ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    if (ip && ip.includes(',')) {
+      ip = ip.split(',')[0].trim();
+    }
+    if (ip && ip.startsWith('::ffff:')) {
+      ip = ip.replace('::ffff:', '');
+    }
+
+    const today = getBangkokDate();
+
+    // บันทึกสถิติ: ถ้า IP เดิมในวันเดียวกันเข้ามา ระบบจะไม่อนุญาตให้ Insert ซ้ำ (ตามเงื่อนไข Unique Key) แต่จะอัปเดตเวลา last_visited_at แทน[cite: 1]
+    await pool.query(
+      `INSERT INTO visitors (ip_address, visit_date, last_visited_at) 
+       VALUES (?, ?, NOW()) 
+       ON DUPLICATE KEY UPDATE last_visited_at = NOW()`,
+      [ip, today]
+    );
+
+    // ดึงจำนวนผู้เข้าชมทั้งหมดมาแสดงผล[cite: 1]
+    const [visitorRows] = await pool.query("SELECT COUNT(*) AS total_visitors FROM visitors");
+    const totalVisitors = visitorRows[0].total_visitors;
+
+    // ดึงข้อมูลกิจกรรมตามปกติ
     const [rows] = await pool.query("SELECT * FROM activities");
-    res.render("index", { user: req.session.user, activities: rows });
+    
+    res.render("index", { 
+      user: req.session.user, 
+      activities: rows, 
+      totalVisitors: totalVisitors 
+    });
+
   } catch (err) {
-    console.error(err);
-    res.render("index", { user: req.session.user, activities: [] });
+    console.error("Visitor Counter Error:", err);
+    const [rows] = await pool.query("SELECT * FROM activities").catch(() => [[]]);
+    res.render("index", { user: req.session.user, activities: rows, totalVisitors: 0 });
   }
 });
 
