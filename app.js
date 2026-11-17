@@ -26,7 +26,7 @@ app.use(
   })
 );
 
-// ตั้งค่า Transport แบบ Stream (ไม่ต่อพอร์ตภายนอก ตัดปัญหา Timeout บน Cloud 100%)
+// ตั้งค่า Transport แบบ Stream (Timeout บน Cloud)
 const transporter = nodemailer.createTransport({
   streamTransport: true,
   newline: 'unix',
@@ -167,7 +167,7 @@ app.get("/forgot-password", (req, res) => {
   res.render("login_forget", { error: null, success: null });
 });
 
-// 10. ประมวลผลส่งอีเมลรีเซ็ต (POST) - ทำงานเสร็จทันที ไม่มีสะดุด
+// 10. ประมวลผลส่งอีเมลรีเซ็ต (POST) 
 app.post("/forgot-password", async (req, res) => {
   const { email } = req.body;
   try {
