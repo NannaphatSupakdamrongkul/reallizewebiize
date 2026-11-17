@@ -43,7 +43,7 @@ function checkAuth(req, res, next) {
 }
 
 // --- ROUTES ---
-// ฟังก์ชันดึงวันที่ปัจจุบันตามโซนเวลา Asia/Bangkok (รูปแบบ YYYY-MM-DD)[cite: 1]
+// ฟังก์ชันดึงวันที่ปัจจุบันตามโซนเวลา Asia/Bangkok 
 function getBangkokDate() {
   const options = { timeZone: 'Asia/Bangkok', year: 'numeric', month: '2-digit', day: '2-digit' };
   const formatter = new Intl.DateTimeFormat('en-CA', options);
